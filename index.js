@@ -32,7 +32,7 @@ opts.jwtFromRequest = cookieExtractor;
 opts.secretOrKey = process.env.JWT_SECRET_KEY;
 
 //middlewares
-server.use(express.static(path.resolve(__dirname, "build")));
+server.use(express.static(path.join(__dirname, "build")));
 server.use(cookieParser());
 server.use(
   session({
@@ -60,7 +60,7 @@ server.use("/cart", isAuth(), cartRouter.router);
 server.use("/orders",isAuth(), ordersRouter.router);
 server.use("/slider", isAuth(), sliderRouter.router);
 server.use("/wishlist", isAuth(), wishlistRoutes.router);
-server.get("*",(req, res)=>res.sendFile(path.resolve("build","index.html")));
+server.get("*",(req, res)=>res.sendFile(path.join("build","index.html")));
 
 // Passport Strategies
 passport.use(
