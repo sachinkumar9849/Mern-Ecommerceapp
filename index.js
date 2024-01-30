@@ -60,7 +60,9 @@ server.use("/cart", isAuth(), cartRouter.router);
 server.use("/orders",isAuth(), ordersRouter.router);
 server.use("/slider", isAuth(), sliderRouter.router);
 server.use("/wishlist", isAuth(), wishlistRoutes.router);
-server.get("*",(req, res)=>res.sendFile(path.join("build","index.html")));
+
+server.get("*", (req, res) => res.sendFile(path.join(__dirname, "build", "index.html")));
+
 
 // Passport Strategies
 passport.use(
